@@ -1,16 +1,5 @@
 <?php
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
-
 // Example Routes
 // Route::view('/', 'landing');
 Route::get('/', 'HomeController@index')->name('/');
@@ -23,9 +12,10 @@ Route::get('ujian', 'UjianController@ujian')->name('ujian')->middleware('auth');
 Route::get('pilih-ujian', 'UjianController@pilih_ujian')->middleware('auth')->name('pilih-ujian');
 Route::post('mulai-ujian', 'UjianController@mulai_ujian')->middleware('auth')->name('mulai-ujian');
 
-Route::match(['get', 'post'], '/dashboard', function () {
-    return view('dashboard');
-});
+// Route::match(['get', 'post'], '/dashboard', function () {
+//     return view('dashboard');
+// });
+Route::get('/dashboard', 'BackendController@index')->name('dashboard')->middleware('auth');
 Route::view('/examples/plugin', 'examples.plugin');
 Route::view('/examples/blank', 'examples.blank');
 
