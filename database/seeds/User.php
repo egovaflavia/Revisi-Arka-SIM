@@ -32,5 +32,14 @@ class User extends Seeder
             'status' => '1',
             'level' => '1',
         ]);
+
+        AppUser::create([
+            'name' => 'Dummy',
+            'email' => 'dummy@dummy.com',
+            'password' => bcrypt('dummy'),
+            'max' => 1,
+            'status' => '1',
+            'level' => '2',
+        ]);
     }
 }
