@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@600&display=swap" rel="stylesheet">
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="assets/style.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.js"
+        integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+
+    <!-- Aos CSS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <!-- Floating -->
+    <script type="text/javascript" src="./assets/floating-whatsapp/jquery-3.3.1.min.js"></script>
+    <link rel="stylesheet" href="./assets/floating-whatsapp/floating-wpp.css">
+    <script type="text/javascript" src="./assets/floating-whatsapp/floating-wpp.js"></script>
+
+    <!-- Stepper -->
+    <!-- CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/materialize-stepper@3.1.0/dist/css/mstepper.min.css">
+    <!-- JS -->
+    <script src="https://unpkg.com/materialize-stepper@3.1.0/dist/js/mstepper.min.js"></script>
+</head>
+
+<body>
+    <!-- Start Page Loading -->
+    <div id="loader-wrapper">
+        <div id="loader"></div>
+        <div class="loader-section section-left"></div>
+        <div class="loader-section section-right"></div>
+    </div>
+    <!-- End Page Loading -->
+
+    <div style="z-index: 10000;" id="myButton"></div>
+
+    <section>
+        <nav>
+            <div class="nav-wrapper container">
+                <a href="#!" class="brand-logo"><img class="responsive-img" width="130" src="./assets/logo.png"></a>
+                <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+                <ul class="right hide-on-med-and-down">
+                    <li><a href="ujian.html">Ujian SIM Online</a></li>
+                    <li><a href="arka.html">Hubungi Kami</a></li>
+                    <li><a href="daftar.html">Daftar</a></li>
+                    <li><a href="login.html">Login</a></li>
+                    <li><a href="akun.html">Akun</a></li>
+                </ul>
+            </div>
+        </nav>
+
+        <ul id="slide-out" class="sidenav">
+            <li>
+                <div class="user-view">
+                    <div class="container">
+                        <img class="responsive-img" src="./assets/logo.png">
+                    </div>
+                </div>
+            </li>
+            <li><a class="waves-effect" href="ujian.html">Ujian SIM Online</a></li>
+            <li><a class="waves-effect" href="#!">Hubungi Kami</a></li>
+            <li><a class="waves-effect" href="daftar.html">Daftar</a></li>
+            <li><a class="waves-effect" href="login.html">Login</a></li>
+            <li><a class="waves-effect" href="akun.html">Akun</a></li>
+        </ul>
+    </section>
+
+
+    <section class="section  center-align">
+        <div class="container">
+            <h4>Ujian SIM Online</h4>
+            <p>
+                Silahkan melakukan pembayaran<br>
+                <b>BNI 723819203 a/n Arka Trans Psikologi</b> <br>
+                Jika sudah melakukan pembayaran, <br>
+                Mohon Hubungi Admin melalui WhatsApp <br>
+                Dan mengirimkan bukti pembayaran <br>
+                <a href="">Klik disini</a>
+            </p>
+            <div class="row">
+                <div class="input-field col s12 m6 offset-m3">
+                    <img src="./assets/un99.svg" class="responsive-img" alt="">
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <footer class="green page-footer">
+        <div class="container">
+            <div class="row">
+                <div class="col l6 s12">
+                    <img class="responsive-img white" src="./assets/logo.png">
+                    <h5 class="white-text">Arka Trans Psikologi Padang</h5>
+                    <p class="grey-text text-lighten-4">
+                        Layanan Contact Center Manajemen Pelaksana Program SIM Online Arka</p>
+                </div>
+                <div class="col l4 offset-l2 s12">
+                    <h5 class="white-text">Navigation</h5>
+                    <ul>
+                        <li><a class="grey-text text-lighten-3" href="ujian.html">Ujian SIM Online</a></li>
+                        <li><a class="grey-text text-lighten-3" href="arka.html">Hubungi Kami</a></li>
+                        <li><a class="grey-text text-lighten-3" href="daftar.html">Daftar</a></li>
+                        <li><a class="grey-text text-lighten-3" href="login.html">Login</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="footer-copyright">
+            <div class="container">
+                © 2020 Copyright <a class="credit" href="">Mediatama Web Indonesia</a> by <a class="credit"
+                    href="">Egova</a>
+                <a class="grey-text text-lighten-4 right" href="#!">Made with Materialize</a>
+            </div>
+        </div>
+    </footer>
+    <div id="myDiv"></div>
+
+    <script>
+        $(document).ready(function () {
+            $('select').formSelect();
+            $('.sidenav').sidenav();
+            $('.slider').slider();
+            $(function () {
+                $('#myButton').floatingWhatsApp({
+                    phone: '5491133359850',
+                    popupMessage: 'Hai, ada yang bisa kami bantu?',
+                    showPopup: true
+                });
+            });
+        });
+
+    </script>
+
+    <!-- Aos JS -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+</body>
+
+</html>
