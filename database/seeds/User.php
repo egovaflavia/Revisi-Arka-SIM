@@ -20,6 +20,7 @@ class User extends Seeder
                 'email' => $faker->email,
                 'password' => bcrypt('admin'),
                 'status' => $faker->randomElement(['1', '2']),
+                'level' => $faker->randomElement(['2']),
             ]);
         }
 
@@ -27,7 +28,9 @@ class User extends Seeder
             'name' => 'Admin',
             'email' => 'admin@admin.com',
             'password' => bcrypt('admin'),
+            'max' => 1,
             'status' => '1',
+            'level' => '1',
         ]);
     }
 }
