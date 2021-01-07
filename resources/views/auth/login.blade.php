@@ -1,73 +1,110 @@
-@extends('layouts.app')
+@extends('layoutsfrontend.app')
 
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Login') }}</div>
 
-                <div class="card-body">
-                    <form method="POST" action="{{ route('login') }}">
-                        @csrf
+<style>
+    html,
+    body {
+        height: 100%;
+    }
 
-                        <div class="form-group row">
-                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
+    html {
+        display: table;
+        margin: auto;
+    }
 
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" required autofocus>
+    body {
+        display: table-cell;
+        vertical-align: middle;
+    }
 
-                                @if ($errors->has('email'))
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('email') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
+    *,
+    a {
+        font-family: 'Quicksand', sans-serif;
+    }
+</style>
 
-                        <div class="form-group row">
-                            <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
 
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required>
+<!-- Form Section -->
 
-                                @if ($errors->has('password'))
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('password') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
+<div class="center-align">
+    <div class="row">
+        <center>
+            <img class="responsive-img" style="width: 250px;" src="{{ asset('./frontend/assets/logo.png') }}" />
+        </center>
+    </div>
+    <div class="section"></div>
 
-                        <div class="form-group row">
-                            <div class="col-md-6 offset-md-4">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
-
-                                    <label class="form-check-label" for="remember">
-                                        {{ __('Remember Me') }}
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="form-group row mb-0">
-                            <div class="col-md-8 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('Login') }}
-                                </button>
-
-                                @if (Route::has('password.request'))
-                                    <a class="btn btn-link" href="{{ route('password.request') }}">
-                                        {{ __('Forgot Your Password?') }}
-                                    </a>
-                                @endif
-                            </div>
-                        </div>
-                    </form>
+    <div class="container" style="margin-bottom: 100px;">
+        <p>Silahkan login, jika Anda lupa password bisa hubungi Admin klik <a href="">disini</a> </p>
+        <div class="z-depth-1 grey lighten-4 row" style="display: inline-block; padding: 32px 48px 0px 48px; border: 1px solid #EEE;">
+            <a href="{{ route('register')  }}" class="btn green darken-1">Belum Punya Akun ?</a>
+            <div class="col s12 "> <br></div>
+            <a href="{{ route('home') }}" class="btn green darken-1">Kembali</a>
+            <form class="col s12 m12" action="{{ route('login') }}" method="post">
+                @csrf
+                <div class='row'>
+                    <div class='col s12'>
+                    </div>
                 </div>
-            </div>
+                <div class='row'>
+                    <div class='input-field col s12'>
+
+                        <input class='validate @error(' email') is-invalid @enderror' type='email' value="{{ old('email') }}" name='email' id='email' required autocomplete="email" autofocus />
+                        <label for='email'>Masukan Email Anda</label>
+                        @if ($errors->has('email'))
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $errors->first('email') }}</strong>
+                        </span>
+                        @endif
+                    </div>
+                </div>
+
+                <div class='row'>
+                    <div class='input-field col s12'>
+
+                        <input id="password" type="password" class="validate @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
+                        <label for='email'>Masukan Password </label>
+                        @if ($errors->has('password'))
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $errors->first('password') }}</strong>
+                        </span>
+                        @endif
+
+                        <label for='password'>Masukan Password Anda</label>
+                    </div>
+                    <label style='float: right;'>
+                        <a class='pink-text' href='#!'><b>Lupa Password ?</b></a>
+                    </label>
+                </div>
+
+                <center>
+                    <div class='row'>
+                        <button type='submit' name='btn_login' class='btn green darken-1'><b>Login</b></button>
+                    </div>
+                </center>
+
+                @if (Route::has('password.request'))
+                <a class="btn btn-link" href="{{ route('password.request') }}">
+                    {{ __('Forgot Your Password?') }}
+                </a>
+                @endif
+
+                <div class="form-group row">
+                    <div class="col-md-6 offset-md-4">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
+
+                            <label class="form-check-label" for="remember">
+                                {{ __('Remember Me') }}
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+            </form>
         </div>
     </div>
 </div>
+
 @endsection

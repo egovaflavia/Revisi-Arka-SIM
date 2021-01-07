@@ -1,0 +1,20 @@
+nav {
+    background-color: white !important;
+}
+
+ul li a,
+.sidenav-trigger i,
+h3,
+h5,
+h4,
+h2 {
+    color: #069c48;
+}
+
+.credit {
+    color: white;
+}
+
+* {
+    font-family: 'Quicksand', sans-serif;
+}
