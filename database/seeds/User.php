@@ -22,5 +22,12 @@ class User extends Seeder
                 'status' => $faker->randomElement(['1', '2']),
             ]);
         }
+
+        AppUser::create([
+            'name' => 'Admin',
+            'email' => 'admin@admin.com',
+            'password' => bcrypt('admin'),
+            'status' => '1',
+        ]);
     }
 }
