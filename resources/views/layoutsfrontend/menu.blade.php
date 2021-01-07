@@ -14,14 +14,14 @@
                     <li><a href="{{ route('register') }}">Daftar</a></li>
                     @endif
                     @else
-                    @if(auth()->user()->status > 0 )
+                    @if(auth()->user()->status > 1 )
                     <li><a href="{{ route('ujian') }}">Ujian SIM Online</a></li>
                     @else
                     <li><a href="{{ route('pay') }}" style="color: #F50057;">Mohon Lakukan Pembayaran</a></li>
                     @endif
                     <li><a href="{{ route('profil') }}">Tentang Kami</a></li>
                     <li><a href="{{ route('akun') }}">{{ Auth::user()->name }}</a></li>
-                    
+
                     <li>
                         <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                             {{ __('Logout') }}

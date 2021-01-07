@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layoutsfrontend.app')
 
 @section('content')
 <!-- Start Page Loading -->
@@ -9,7 +9,7 @@
 </div>
 <!-- End Page Loading -->
 
-@include('layouts.menu')
+@include('layoutsfrontend.menu')
 
 <section class="section grey grey lighten-2 center-align">
     <div class="container">
@@ -66,6 +66,6 @@
     </div>
 </section>
 
-@include ('layouts.footer')
+@include ('layoutsfrontend.footer')
 
 @endsection
