@@ -1,84 +1,61 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use DB;
 use Illuminate\Http\Request;
 
 class SubtestController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
-        //
+        $data = DB::table('subtest')->get();
+        return view('backend.subtest.index',compact('data'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
+    public function add()
     {
-        //
+        return view('backend.subtest.add');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
+    public function create(Request $r)
     {
-        //
+        $simpan = DB::table('subtest')->insert([
+            'sentence' => $r->sentence
+        ]);
+        return redirect('kategoris')->with('pesan','Input Data Success');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
+    public function edit($ids)
     {
-        //
+        $id = decrypt($ids);
+        $data = DB::table('subtest')->where('id',$id)->first();
+        return view('backend.subtest.edit',compact('data'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
+    public function update(Request $r)
     {
-        //
+        $id = $r->id;
+        $edit = DB::table('subtest')->where('id',$id)->update([
+            'sentence' => $r->sentence
+        ]);
+
+        if($edit == TRUE)
+        {
+            return redirect('subtest')->with('pesan','Edit Data Success');
+        }else{
+            return redirect('subtest')->with('error','Edit Data Gagal');
+        }
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
+    public function delete($ids)
     {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
+        $id = decrypt($ids);
+        $delete = DB::table('subtest')->where('id',$id)->delete();
+        if($delete == TRUE)
+        {
+            return back()->with('pesan','Hapus Data Berhasil');
+        }else{
+            return back()->with('pesan','Hapus Data Gagal');
+        }
     }
 }

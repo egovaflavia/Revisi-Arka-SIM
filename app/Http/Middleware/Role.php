@@ -20,9 +20,11 @@ class Role
             return redirect('/home');
 
         $user = Auth::user();
-        if ($user->level == $role)
+        if ($user->level == $role){
             return $next($request);
+        }else{
+            return redirect('/home');
+        }
 
-        return redirect('/home');
     }
 }
