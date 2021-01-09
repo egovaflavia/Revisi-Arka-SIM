@@ -14,9 +14,9 @@ class Subtest extends Seeder
     public function run()
     {
         $faker = Faker::create('id_ID');
-        for ($i = 0; $i < 10; $i++) {
+        for ($i = 1; $i <= 3; $i++) {
             AppSubtest::create([
-                'sentence' => $faker->sentence,
+                'sentence' => 'Subtest ' . $i,
             ]);
         }
     }

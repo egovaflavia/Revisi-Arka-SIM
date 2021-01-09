@@ -37,4 +37,9 @@ class User extends Authenticatable
     {
         return $this->hasMany('App\Jawaban', 'user_id');
     }
+    public function data_user()
+    {
+        return $this->hasOne('App\DataUser', 'user_id');
+    }
+
 }

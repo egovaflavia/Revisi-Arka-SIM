@@ -15,9 +15,10 @@ class CreateJawabansTable extends Migration
     {
         Schema::create('jawaban', function (Blueprint $table) {
             $table->increments('id');
+            $table->unsignedInteger('ujian_id');
             $table->unsignedInteger('soal_id');
             $table->unsignedInteger('user_id');
-            $table->string('jawaban_dipilih');
+            $table->string('jawaban_dipilih')->nullable;
             $table->timestamps();
         });
     }
