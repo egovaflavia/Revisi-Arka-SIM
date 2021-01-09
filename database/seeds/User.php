@@ -13,17 +13,6 @@ class User extends Seeder
      */
     public function run()
     {
-        $faker = Faker::create('id_ID');
-        for ($i = 0; $i < 10; $i++) {
-            AppUser::create([
-                'name' => $faker->name(),
-                'email' => $faker->email,
-                'password' => bcrypt('admin'),
-                'status' => $faker->randomElement(['1', '2']),
-                'level' => $faker->randomElement(['2']),
-            ]);
-        }
-
         AppUser::create([
             'name' => 'Admin',
             'email' => 'admin@admin.com',
@@ -38,8 +27,19 @@ class User extends Seeder
             'email' => 'dummy@dummy.com',
             'password' => bcrypt('dummy'),
             'max' => 1,
-            'status' => '1',
+            'status' => '2',
             'level' => '2',
         ]);
+
+        $faker = Faker::create('id_ID');
+        for ($i = 0; $i < 10; $i++) {
+            AppUser::create([
+                'name' => $faker->name(),
+                'email' => $faker->email,
+                'password' => bcrypt('admin'),
+                'status' => $faker->randomElement(['1', '2']),
+                'level' => $faker->randomElement(['2']),
+            ]);
+        }
     }
 }
