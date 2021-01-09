@@ -13,13 +13,25 @@ class Kategori extends Seeder
      */
     public function run()
     {
-        $faker = Faker::create('id_ID');
-        for ($i = 0; $i < 10; $i++) {
-            AppKategori::create([
-                'sentence' => $faker->sentence,
-                'subsentence' => $faker->sentence,
-                'file' => 'https://placehold.co/300x200',
-            ]);
-        }
+        // $faker = Faker::create('id_ID');
+        // for ($i = 1; $i <= 2; $i++) {
+        //     AppKategori::create([
+        //         'sentence' => $faker->sentence,
+        //         'subsentence' => $faker->sentence,
+        //         'file' => 'https://placehold.co/300x200',
+        //     ]);
+        // }
+
+        AppKategori::create([
+            'sentence' => 'Buat SIM A',
+            'subsentence' => 'Buat SIM A',
+            'file' => 'https://placehold.co/300x200',
+        ]);
+
+        AppKategori::create([
+            'sentence' => 'Perpanjang SIM A',
+            'subsentence' => 'Perpanjang SIM A',
+            'file' => 'https://placehold.co/300x200',
+        ]);
     }
 }

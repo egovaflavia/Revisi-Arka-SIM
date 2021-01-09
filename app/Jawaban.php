@@ -9,6 +9,7 @@ class Jawaban extends Model
     protected $table = 'jawaban';
     protected $fillable =
     [
+        'ujian_id',
         'soal_id',
         'user_id',
         'jawaban_dipilih',

@@ -16,8 +16,8 @@ class Soal extends Seeder
         $faker = Faker::create('id_ID');
         for ($i = 0; $i < 10; $i++) {
             AppSoal::create([
-                'kategori_id' => $faker->randomElement(['1', '2', '3', '4', '5', '6', '7', '8', '9', '10']),
-                'subtest_id' => $faker->randomElement(['1', '2', '3', '4', '5', '6', '7', '8', '9', '10']),
+                'kategori_id' => $faker->randomElement(['1', '2']),
+                'subtest_id' => $faker->randomElement(['1', '2', '3']),
                 'pertanyaan' => $faker->sentence,
                 'pilihan_a' => $faker->sentence,
                 'pilihan_b' => $faker->sentence,

@@ -24,7 +24,7 @@
                     <li><a class="grey-text text-lighten-3" href="{{ route('pay') }}" style="color: #F50057;">Mohon Lakukan Pembayaran</a></li>
                     @endif
                     <li><a class="grey-text text-lighten-3" href="{{ route('profil') }}">Tentang Kami</a></li>
-                    <li><a class="grey-text text-lighten-3" href="{{ route('akun') }}">{{ Auth::user()->name }}</a></li>
+                    <li><a class="grey-text text-lighten-3" href="">{{ Auth::user()->name }}</a></li>
 
                     <li>
                         <a class="grey-text text-lighten-3" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">

@@ -16,9 +16,10 @@ class Jawaban extends Seeder
         $faker = Faker::create('id_ID');
         for ($i = 0; $i < 10; $i++) {
             AppJawaban::create([
+                'ujian_id' => $faker->randomElement(['1', '2', '3', '4', '5', '6', '7', '8', '9', '10']),
                 'soal_id' => $faker->randomElement(['1', '2', '3', '4', '5', '6', '7', '8', '9', '10']),
                 'user_id' => $faker->randomElement(['1', '2', '3', '4', '5', '6', '7', '8', '9', '10']),
-                'jawaban_dipilih' => $faker->randomElement(['a', 'b', 'b'])
+                'jawaban_dipilih' => $faker->randomElement(['a', 'b', 'c'])
             ]);
         }
     }
