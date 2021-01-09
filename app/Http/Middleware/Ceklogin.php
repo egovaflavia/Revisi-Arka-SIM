@@ -17,6 +17,19 @@ class Ceklogin
      */
     public function handle($request, Closure $next)
     {
-        return $next($request);
+        $user = Auth::user();
+        if($user != NULL)
+        {
+            $level = $user->level;
+        }else{
+            $level = '';
+        }
+        if ($level == 1){
+            return redirect('dashboard');
+        }elseif($level == 2){
+            return redirect('/home');
+        }elseif($level == null){
+            return redirect('/home');
+        }
     }
 }

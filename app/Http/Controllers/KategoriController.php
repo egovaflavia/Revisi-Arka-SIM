@@ -3,82 +3,93 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
+use File;
+use DB;
 
 class KategoriController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    public function __construct()
+    {
+        $this->rules = array(
+            'file' => 'mimes:jpeg,jpg,png|max:10000',
+        );
+    }
+
     public function index()
     {
-        //
+        $data = DB::table('kategori')->get();
+        return view('backend.kategori.index',compact('data'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
+    public function add()
     {
-        //
+        return view('backend.kategori.add');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
+    public function create(Request $r)
     {
-        //
+        $validator = Validator::make($r->all(),$this->rules);
+        if($validator->fails()){
+            return back()->with('validasi','Pastikan Format Dengan Benar.');
+        }else{
+            $filename = $r->file->getClientOriginalName();
+            $r->file('file')->move('kategori',$r->file->getClientOriginalName());
+            // simpan
+            DB::table('kategori')->insert([
+                'sentence' => $r->sentence,
+                'subsentence' => $r->subsentence,
+                'file' => $filename
+            ]);
+
+            return redirect('kategoris')->with('pesan','Input Data Success');
+        }
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
+    public function edit($ids)
     {
-        //
+        $id = decrypt($ids);
+        $data = DB::table('kategori')->where('id', $id)->first();
+        return view('backend.kategori.edit',compact('data'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
+    public function update(Request $r)
     {
-        //
+        if($r->file('file') == NULL)
+        {
+            DB::table('kategori')->where('id',$r->id)->update([
+                'sentence' => $r->sentence,
+                'subsentence' => $r->subsentence
+            ]);
+            return redirect('kategoris')->with('pesan','Edit Data Success');
+        }else{
+            $validator = Validator::make($r->all(),$this->rules);
+            if($validator->fails()){
+                return back()->with('validasi','Pastikan Format Dengan Benar.');
+            }else{
+                $filename = $r->file->getClientOriginalName();
+                $r->file('file')->move('kategori',$r->file->getClientOriginalName());
+                // simpan
+                DB::table('kategori')->where('id',$r->id)->update([
+                    'sentence' => $r->sentence,
+                    'subsentence' => $r->subsentence,
+                    'file' => $filename
+                ]);
+    
+                return redirect('kategoris')->with('pesan','Edit Data Success');
+            }
+        }
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
+    public function delete($ids)
     {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
+        $id = decrypt($ids);
+        $delete = DB::table('kategori')->where('id',$id)->delete();
+        if($delete == TRUE)
+        {
+            return back()->with('pesan','Hapus Data Berhasil');
+        }else{
+            return back()->with('pesan','Hapus Data Gagal');
+        }
     }
 }
