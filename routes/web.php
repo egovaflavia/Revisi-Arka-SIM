@@ -9,7 +9,8 @@ Route::get('/home', 'HomeController@index')->name('home')->middleware('ceklogin'
 Route::get('pay', 'HomeController@pay')->name('pay')->middleware('auth');
 Route::get('profil', 'HomeController@profil')->name('profil');
 
-Route::get('akun', 'BioController@index')->name('akun')->middleware('auth');
+Route::get('akun/{id}', 'HomeController@akun')->name('akun')->middleware('auth');
+Route::post('akunUpdate', 'HomeController@akunUpdate')->name('akunUpdate')->middleware('auth');
 Route::get('ujian', 'HomeController@step1')->name('ujian')->middleware('auth');
 Route::get('pilih-ujian/', 'HomeController@step2')->middleware('auth')->name('pilih-ujian');
 Route::post('mulai-ujian', 'HomeController@step3')->middleware('auth')->name('mulai-ujian');
@@ -39,7 +40,7 @@ Route::get('/editkategori/{id}', 'KategoriController@edit')->name('editkategori'
 Route::post('/updatekategori', 'KategoriController@update')->name('updatekategori')->middleware('role:1');
 
 // Soal
-Route::get('/soals','SoalController@index')->name('soals')->middleware('role:1');
+Route::get('/soals', 'SoalController@index')->name('soals')->middleware('role:1');
 Route::get('/detailsoal/{ids}/{idd}', 'SoalController@detail')->name('detailsoal')->middleware('role:1');
 Route::get('/subtestdetail/{id}', 'SoalController@subtest')->name('subtestdetail')->middleware('role:1');
 Route::get('/addsoal', 'SoalController@add')->name('addsoal')->middleware('role:1');
@@ -48,7 +49,7 @@ Route::get('/deletesoal/{id}', 'SoalController@delete')->name('deletesoal')->mid
 Route::post('/updatesoal', 'SoalController@update')->name('updatesoal')->middleware('role:1');
 
 // Subtest
-Route::get('/subtest','SubtestController@index')->name('subtest')->middleware('role:1');
+Route::get('/subtest', 'SubtestController@index')->name('subtest')->middleware('role:1');
 Route::get('/addsubtest', 'SubtestController@add')->name('addsubtest')->middleware('role:1');
 Route::post('/createsubtest', 'SubtestController@create')->name('createsubtest')->middleware('role:1');
 Route::get('/deletesubtest/{id}', 'SubtestController@delete')->name('deletesubtest')->middleware('role:1');

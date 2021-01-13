@@ -15,7 +15,7 @@ class CreateDataUsersTable extends Migration
     {
         Schema::create('data_user', function (Blueprint $table) {
             $table->increments('id');
-            $table->unsignedInteger('id_user');
+            $table->integer('user_id')->unique()->nullable();
             $table->string('nik')->unique()->nullable();
             $table->string('nama')->nullable();
             $table->string('tempat_lahir')->nullable();

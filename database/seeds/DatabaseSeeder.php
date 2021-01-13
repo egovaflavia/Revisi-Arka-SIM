@@ -17,5 +17,6 @@ class DatabaseSeeder extends Seeder
         $this->call(Soal::class);
         $this->call(Subtest::class);
         $this->call(Ujian::class);
+        $this->call(DataUser::class);
     }
 }

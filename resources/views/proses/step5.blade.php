@@ -66,7 +66,7 @@
 
                         <div class="">
                             <!-- Here goes your actions buttons -->
-                            <button type="submit" class="waves-effect waves-dark btn ">CONTINUE</button>
+                            <button type="submit" class="waves-effect waves-dark btn ">Selesai</button>
                         </div>
                     </div>
                 </li>

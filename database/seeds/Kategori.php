@@ -25,13 +25,24 @@ class Kategori extends Seeder
         AppKategori::create([
             'sentence' => 'Buat SIM A',
             'subsentence' => 'Buat SIM A',
-            'file' => 'https://placehold.co/300x200',
+            'file' => 'SimABaru.jpg',
         ]);
 
         AppKategori::create([
             'sentence' => 'Perpanjang SIM A',
             'subsentence' => 'Perpanjang SIM A',
-            'file' => 'https://placehold.co/300x200',
+            'file' => 'SimaAPerpanjang.jpg',
+        ]);
+        AppKategori::create([
+            'sentence' => 'Buat SIM C',
+            'subsentence' => 'Buat SIM C',
+            'file' => 'SIMCBaru.jpg',
+        ]);
+
+        AppKategori::create([
+            'sentence' => 'Perpanjang SIM C',
+            'subsentence' => 'Perpanjang SIM C',
+            'file' => 'SIMCPerpanjang.png',
         ]);
     }
 }

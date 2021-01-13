@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\DataUser;
 use App\Jawaban;
 use App\Kategori;
 use App\Soal;
 use App\Ujian;
+use App\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -139,8 +141,46 @@ class HomeController extends Controller
         return view('proses.step5', compact('id_ujian', 'id_kategori', 'soal'));
     }
 
-    public function step6()
+    public function step6(Request $request)
     {
-        dd('Selamat anda telah menyelesaikan test');
+        $id_ujian = $request->id_ujian;
+        $hasil = Jawaban::with('soal')->where('ujian_id', $id_ujian)->get();
+        $benar = 0;
+        $salah = 0;
+        foreach ($hasil as $no => $row) {
+            if ($row->jawaban_dipilih == $row->soal->kunci) {
+                $benar = $benar + 1;
+            } else {
+                $salah = $salah + 1;
+            }
+        }
+        return view('proses.hasil', compact('benar', 'salah'));
+    }
+
+    public function akun($id)
+    {
+        $id_user = decrypt($id);
+        $user = DB::table('data_user')->where('user_id', $id_user)->first();
+        return view('akun', compact('user'));
+    }
+
+    public function akunUpdate(Request $request)
+    {
+        DataUser::create(
+            [
+                'user_id' => auth()->user()->id,
+                'nik' => $request->nik,
+                'nama' => $request->nama,
+                'tempat_lahir' => $request->tempat_lahir,
+                'tgl_lahir' => $request->tgl_lahir,
+                'suku' => $request->suku,
+                'pendidikan' => $request->pendidikan,
+                'pekerjaan' => $request->pekerjaan,
+                'agama' => $request->agama,
+                'alamat' => $request->alamat,
+            ]
+        );
+
+        return redirect('ujian');
     }
 }
