@@ -120,6 +120,12 @@
                             </a>
                         </li>
                         <li class="nav-main-item open">
+                            <a class="nav-main-link" href="{{route('users')}}">
+                                <i class="nav-main-link-icon si si-user"></i>
+                                <span class="nav-main-link-name">User</span>
+                            </a>
+                        </li>
+                        <li class="nav-main-item open">
                             <a class="nav-main-link" href="{{route('kategoris')}}">
                                 <i class="nav-main-link-icon si si-list"></i>
                                 <span class="nav-main-link-name">Kategori</span>
@@ -137,7 +143,13 @@
                                 <span class="nav-main-link-name">Soal</span>
                             </a>
                         </li>
-                        <li class="nav-main-item{{ request()->is('examples/*') ? ' open' : '' }}">
+                        <li class="nav-main-item open">
+                            <a class="nav-main-link" href="{{route('soals')}}">
+                                <i class="nav-main-link-icon fas fa-star"></i>
+                                <span class="nav-main-link-name">Skor</span>
+                            </a>
+                        </li>
+                        {{-- <li class="nav-main-item{{ request()->is('examples/*') ? ' open' : '' }}">
                             <a class="nav-main-link nav-main-link-submenu" data-toggle="submenu" aria-haspopup="true" aria-expanded="true" href="#">
                                 <i class="nav-main-link-icon si si-bulb"></i>
                                 <span class="nav-main-link-name">Examples</span>
@@ -154,7 +166,7 @@
                                     </a>
                                 </li>
                             </ul>
-                        </li>
+                        </li> --}}
                         
                     </ul>
                 </div>
