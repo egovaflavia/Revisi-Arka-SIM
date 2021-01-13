@@ -54,3 +54,14 @@ Route::post('/createsubtest', 'SubtestController@create')->name('createsubtest')
 Route::get('/deletesubtest/{id}', 'SubtestController@delete')->name('deletesubtest')->middleware('role:1');
 Route::get('/editsubtest/{id}', 'SubtestController@edit')->name('editsubtest')->middleware('role:1');
 Route::post('/updatesubtest', 'SubtestController@update')->name('updatesubtest')->middleware('role:1');
+
+// user
+Route::get('/users', 'UserController@index')->name('users')->middleware('role:1');
+Route::get('/adduser', 'UserController@add')->name('adduser')->middleware('role:1');
+Route::post('/createuser', 'UserController@create')->name('createuser')->middleware('role:1');
+Route::get('/deleteuser/{id}', 'UserController@delete')->name('deleteuser')->middleware('role:1');
+Route::get('/edituser/{id}', 'UserController@edit')->name('edituser')->middleware('role:1');
+Route::get('/updateuser/{id}/{status}', 'UserController@update')->name('updateuser')->middleware('role:1');
+
+// score
+Route::get('/scors', 'JawabanController@index')->name('scors')->middleware('role:1');
